@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@adobe/css-tools@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.0.1.tgz#b38b444ad3aa5fedbb15f2f746dcd934226a12dd"
-  integrity sha512-+u76oB43nOHrF4DDWRLWDCtci7f3QJoEBigemIdIeTi1ODqjx6Tad9NCVnPRwewWlKkVab5PlK8DCtPTyX7S8g==
+"@adobe/css-tools@^4.4.0":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.4.2.tgz#c836b1bd81e6d62cd6cdf3ee4948bcdce8ea79c8"
+  integrity sha512-baYZExFpsdkBNuvGKTKWCwKH57HRZLVtycZS05WTQNVOiXVSeAki3nU35zlRbToeMW8aHlJfyS+1C4BOv27q0A==
 
 "@ampproject/remapping@^2.1.0":
   version "2.1.2"
@@ -1022,7 +1022,7 @@
     core-js-pure "^3.20.2"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.16.3", "@babel/runtime@^7.8.4":
   version "7.17.9"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.17.9.tgz#d19fbf802d01a8cb6cf053a64e472d42c434ba72"
   integrity sha512-lSiBBvodq29uShpWGNbgFdKYNiFDo5/HIYsaCEY9ff4sb10x9jizo2+pRrSyF4jKZCXqgzuqBOQKbUm90gQwJg==
@@ -1633,19 +1633,17 @@
     lz-string "^1.4.4"
     pretty-format "^27.0.2"
 
-"@testing-library/jest-dom@^5.16.5":
-  version "5.16.5"
-  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.16.5.tgz#3912846af19a29b2dbf32a6ae9c31ef52580074e"
-  integrity sha512-N5ixQ2qKpi5OLYfwQmUb/5mSV9LneAcaUfp32pn4yCnpb8r/Yz0pXFPck21dIicKmi+ta5WRAknkZCfA8refMA==
+"@testing-library/jest-dom@^6.6.3":
+  version "6.6.3"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-6.6.3.tgz#26ba906cf928c0f8172e182c6fe214eb4f9f2bd2"
+  integrity sha512-IteBhl4XqYNkM54f4ejhLRJiZNqcSCoXUOG2CPK7qbD322KjQozM4kHQOfkG2oln9b9HTYqs+Sae8vBATubxxA==
   dependencies:
-    "@adobe/css-tools" "^4.0.1"
-    "@babel/runtime" "^7.9.2"
-    "@types/testing-library__jest-dom" "^5.9.1"
+    "@adobe/css-tools" "^4.4.0"
     aria-query "^5.0.0"
     chalk "^3.0.0"
     css.escape "^1.5.1"
-    dom-accessibility-api "^0.5.6"
-    lodash "^4.17.15"
+    dom-accessibility-api "^0.6.3"
+    lodash "^4.17.21"
     redent "^3.0.0"
 
 "@testing-library/react@^13.3.0":
@@ -1839,7 +1837,7 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@*", "@types/jest@^28.1.6":
+"@types/jest@^28.1.6":
   version "28.1.6"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-28.1.6.tgz#d6a9cdd38967d2d746861fb5be6b120e38284dd4"
   integrity sha512-0RbGAFMfcBJKOmqRazM8L98uokwuwD5F8rHrv/ZMbrZBwVOWZUyPG6VFNscjYr/vjM3Vu4fRrCPbOs42AfemaQ==
@@ -1965,13 +1963,6 @@
     "@types/hoist-non-react-statics" "*"
     "@types/react" "*"
     csstype "^3.0.2"
-
-"@types/testing-library__jest-dom@^5.9.1":
-  version "5.14.3"
-  resolved "https://registry.yarnpkg.com/@types/testing-library__jest-dom/-/testing-library__jest-dom-5.14.3.tgz#ee6c7ffe9f8595882ee7bda8af33ae7b8789ef17"
-  integrity sha512-oKZe+Mf4ioWlMuzVBaXQ9WDnEm1+umLx0InILg+yvZVBBDmzV5KfZyLrCvadtWcx8+916jLmHafcmqqffl+iIw==
-  dependencies:
-    "@types/jest" "*"
 
 "@types/trusted-types@^2.0.2":
   version "2.0.2"
@@ -3682,10 +3673,15 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-dom-accessibility-api@^0.5.6, dom-accessibility-api@^0.5.9:
+dom-accessibility-api@^0.5.9:
   version "0.5.13"
   resolved "https://registry.yarnpkg.com/dom-accessibility-api/-/dom-accessibility-api-0.5.13.tgz#102ee5f25eacce09bdf1cfa5a298f86da473be4b"
   integrity sha512-R305kwb5CcMDIpSHUnLyIAp7SrSPBx6F0VfQFB3M75xVMHhXJJIdePYgbPPh1o57vCHNu5QztokWUPsLjWzFqw==
+
+dom-accessibility-api@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/dom-accessibility-api/-/dom-accessibility-api-0.6.3.tgz#993e925cc1d73f2c662e7d75dd5a5445259a8fd8"
+  integrity sha512-7ZgogeTnjuHbo+ct10G9Ffp0mif17idi0IyWNVA/wcwcm7NPOD/WEHVP3n7n3MhXqxoIYm8d6MuZohYWIZ4T3w==
 
 dom-converter@^0.2.0:
   version "0.2.0"
@@ -6108,7 +6104,7 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@4, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
+lodash@4, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
