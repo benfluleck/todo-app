@@ -8,6 +8,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App apiUrl="http://localhost:3001"/>
+    <App />
   </React.StrictMode>
 );
