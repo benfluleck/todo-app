@@ -545,6 +545,9 @@
   .top-1\/2 {
     top: calc(1/2 * 100%);
   }
+  .bottom-0 {
+    bottom: calc(var(--spacing) * 0);
+  }
   .left-1 {
     left: calc(var(--spacing) * 1);
   }
@@ -616,9 +619,6 @@
   }
   .table {
     display: table;
-  }
-  .h-96 {
-    height: calc(var(--spacing) * 96);
   }
   .h-\[400px\] {
     height: 400px;

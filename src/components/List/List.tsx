@@ -11,7 +11,7 @@ const List = <Todo extends Record<string, any>>({
   getKey,
   getRow,
 }: ListProps<Todo>) => (
-  <ul className="h-[500px]">
+  <ul>
     {todos.map((todo) => (
       <Fragment key={getKey(todo)}>{getRow(todo)}</Fragment>
     ))}

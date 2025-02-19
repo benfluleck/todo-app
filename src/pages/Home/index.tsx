@@ -78,13 +78,18 @@ const Home: FC = () => {
     }
   };
 
-  
   return (
     <div className="-translate-y-1/2 -translate-x-1/2 fixed divide-x-2 divide-solid divide-slate-100 dark:divide-slate-900 top-1/2 left-1/2 rounded-md bg-white dark:bg-slate-700 grid lg:grid-cols-[3fr_1fr] xl:grid-cols-[4fr_1fr] grid-cols-1">
       <div className="col-span-full px-2 py-2 rounded-t-md bg-slate-100 dark:bg-slate-900">
         <Status todos={todos} />
       </div>
-      <div className={`w-full xl:w-xl l:w-xl ${currentStatus !== API_STATUS.ERROR ? "overflow-y-auto" : ""}`}>
+      <div
+        className={`w-full xl:w-xl l:w-xl h-[500px] ${
+          currentStatus === API_STATUS.LOADING
+            ? "flex flex-col items-center justify-center"
+            : "relative overflow-y-auto"
+        }`}
+      >
         {currentStatus === API_STATUS.LOADING && <Loader />}
         <List<TodoItem>
           todos={todos}
