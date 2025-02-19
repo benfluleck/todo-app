@@ -1,48 +1,14 @@
-import React, { Component } from 'react';
-import { nanoid } from 'nanoid';
-import {Status} from './components/Status';
+import { FC } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 
-class App extends Component<any, any> {
-  state = {
-    value: '',
-    todos: []
-  }
+import Layout from "./layouts/Layout";
+import Home from "./pages/Home";
+import "./assets/output.css";
 
-  componentDidMount() {
-    fetch(`${this.props.apiUrl}/todos`)
-      .then(r => r.json())
-      .then(todos => this.setState({ todos }))
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.apiUrl !== this.props.apiUrl) {
-      fetch(`${this.props.apiUrl}/todos`)
-        .then(r => r.json())
-        .then(todos => this.setState({ todos }))
-    }
-  }
-
-  updateValue(e: any) {
-    this.setState({value: e.target.value})
-  }
-
-  render() {
-    return (
-      <div>
-        <Status/>
-        <input type="text" value={this.state.value} onChange={this.updateValue.bind(this)}/>
-        <ul>
-          {this.state.todos.map((todo: any, i: number) => <li key={i}>{todo.value}</li>)}
-        </ul>
-        <button
-          onClick={() => this.setState({todos: [...this.state.todos, {id: nanoid(), value: this.state.value, done: false, createdAt: Date.now()}]})}
-        >
-          add todo
-        </button>
-        <Status/>
-      </div>
-    );
-  }
-}
-
-export default App;
+const App: FC = () => (
+  <Layout>
+    <ErrorBoundary fallback={<div>Something went wrong</div>}>
+      <Home />
+    </ErrorBoundary>
+  </Layout>
+);

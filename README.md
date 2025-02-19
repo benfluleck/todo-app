@@ -37,3 +37,25 @@ To run tests run:
 
 
 ## Have fun! 🤓 🥳
+
+To run 
+
+- create an .env file
+- create 'REACT_APP_API_URL=localhost:3001'
+
+
+
+Features include
+- Responsiveness
+- Dark mode
+- Unit Testing 
+- E2E testing 
+
+
+Extra libraries
+- react-error-boundary for the error boundary
+- zod for types and parsing
+- tailwind for css
+- ts-jest
+
+

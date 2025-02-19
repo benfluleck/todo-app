@@ -1,6 +1,7 @@
 {
   "name": "todo-sample",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^6.6.3",
@@ -13,6 +14,7 @@
     "nanoid": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-error-boundary": "^5.0.0",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.5",
     "tailwindcss": "^4.0.6",
@@ -26,7 +28,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start:server": "npx json-server --watch db.json --port 3001",
-    "prepare": "cp db.json.sample db.json"
+    "build:css": "npx @tailwindcss/cli -i ./src/global.css -o ./src/assets/output.css",
+    "watch:css": "npx @tailwindcss/cli -i ./src/global.css -o ./src/assets/output.css --watch",
+    "prepare": "cp db.json.sample db.json",
+    "e2e": "npx playwright test",
+    "e2e:ui": "npx playwright test -ui"
   },
   "eslintConfig": {
     "extends": [
@@ -47,8 +53,22 @@
     ]
   },
   "devDependencies": {
+    "@playwright/test": "^1.50.1",
     "@types/styled-components": "^5.1.25",
     "json-server": "^0.17.0",
-    "sass": "^1.54.0"
+    "sass": "^1.54.0",
+    "ts-jest": "^29.2.5"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/*.ts",
+      "src/**/*.ts"
+    ],
+    "testMatch": [
+      "/**/?(*.)(test).(ts|js)?(x)"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(nanoid)/)"
+    ]
   }
 }

@@ -1,6 +1,6 @@
 import { Fragment, Key, ReactNode } from "react";
 
-type ListProps<Item> = {
+export type ListProps<Item> = {
   todos: Item[];
   getKey: (item: Item) => Key;
   getRow: (value: Item) => ReactNode;
@@ -11,7 +11,7 @@ const List = <Todo extends Record<string, any>>({
   getKey,
   getRow,
 }: ListProps<Todo>) => (
-  <ul className="h-[500px]">
+  <ul className="">
     {todos.map((todo) => (
       <Fragment key={getKey(todo)}>{getRow(todo)}</Fragment>
     ))}

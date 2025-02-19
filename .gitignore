@@ -23,3 +23,19 @@ yarn-debug.log*
 yarn-error.log*
 
 db.json
+
+
+.vscode
+
+dist
+
+.env
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+output.css

@@ -1,18 +1,20 @@
 import { FC } from "react";
 
-type ItemProps = {
+export type ItemProps = {
   title: string;
   done: boolean;
+  handleClick: () => void;
 };
 
-const Item: FC<ItemProps> = ({ title, done }) => {
+const Item: FC<ItemProps> = ({ title, done, handleClick }) => {
   return (
     <li
+      onClick={handleClick}
       className={`flex gap-4 ${
         done ? "line-through" : ""
-      } border-b py-1.5 border-slate-100 dark:border-slate-900 hover:bg-stone-50 px-4 cursor-pointer`}
+      } border-b py-1.5 border-slate-100 dark:border-slate-900 hover:bg-stone-50 dark:hover:bg-gray-800 px-4 cursor-pointer`}
     >
-      <input type="checkbox" checked={done} />
+      <input type="checkbox" checked={done} onChange={handleClick} />
       <span>{title}</span>
     </li>
   );
