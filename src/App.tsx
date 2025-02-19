@@ -12,3 +12,5 @@ const App: FC = () => (
     </ErrorBoundary>
   </Layout>
 );
+
+export default App;

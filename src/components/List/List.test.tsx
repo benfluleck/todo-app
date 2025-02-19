@@ -6,8 +6,8 @@ const mockProps: ListProps<Record<string, any>> = {
     { id: "1", value: "Item 1" },
     { id: "2", value: "Item 2" },
   ],
-  getKey: (item) => item.id,
-  getRow: (item) => <li>{item.value}</li>,
+  getKey: (todo) => todo.id,
+  getRow: (todo) => <li>{todo.value}</li>,
 };
 
 describe("List Component", () => {

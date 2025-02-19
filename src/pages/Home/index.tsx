@@ -83,7 +83,7 @@ const Home: FC = () => {
       <div className="col-span-full px-2 py-2 rounded-t-md bg-slate-100 dark:bg-slate-900">
         <Status todos={todos} />
       </div>
-      <div className="w-full xl:w-xl l:w-xl overflow-y-scroll h-[500px]">
+      <div className={`w-full xl:w-xl l:w-xl ${currentStatus !== API_STATUS.ERROR ? "overflow-y-auto" : ""}`}>
         {currentStatus === API_STATUS.LOADING && <Loader />}
         <List<TodoItem>
           todos={todos}

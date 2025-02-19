@@ -11,12 +11,11 @@ const List = <Todo extends Record<string, any>>({
   getKey,
   getRow,
 }: ListProps<Todo>) => (
-  <ul className="">
+  <ul className="h-[500px]">
     {todos.map((todo) => (
       <Fragment key={getKey(todo)}>{getRow(todo)}</Fragment>
     ))}
   </ul>
 );
-
 
 export default List;

@@ -1,8 +1,6 @@
 import { TodoList } from "../entities/todo";
 import getTodoCount from "./getTodoCount";
 
-
-
 describe("getTodoCount", () => {
   it("should return the correct count of completed and inComplete todos", () => {
     const todos: TodoList = [
@@ -15,7 +13,6 @@ describe("getTodoCount", () => {
     expect(completed).toBe(2);
     expect(inComplete).toBe(1);
   });
-
 
   it("should return 0 for completed and inComplete todos when no todos are passed", () => {
     const todos: TodoList = [];

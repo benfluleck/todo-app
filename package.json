@@ -65,7 +65,7 @@
       "src/**/*.ts"
     ],
     "testMatch": [
-      "/**/?(*.)(test).(ts|js)?(x)"
+      "/**/?(*.)(spec|test).(ts|js)?(x)"
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!(nanoid)/)"
