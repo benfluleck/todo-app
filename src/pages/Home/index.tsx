@@ -78,6 +78,7 @@ const Home: FC = () => {
     }
   };
 
+  
   return (
     <div className="-translate-y-1/2 -translate-x-1/2 fixed divide-x-2 divide-solid divide-slate-100 dark:divide-slate-900 top-1/2 left-1/2 rounded-md bg-white dark:bg-slate-700 grid lg:grid-cols-[3fr_1fr] xl:grid-cols-[4fr_1fr] grid-cols-1">
       <div className="col-span-full px-2 py-2 rounded-t-md bg-slate-100 dark:bg-slate-900">

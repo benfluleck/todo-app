@@ -18,14 +18,14 @@ interface ITodoController {
 }
 
 export class HTTPTodoController implements ITodoController {
-  constructor(private apiUrl: string, private queryFn: typeof fetch = fetch) {}
+  constructor(private apiUrl: string) {}
 
   async updateTodo(
     id: string,
     done: boolean
   ): Promise<{ todoItem: TodoItem | null; error: string | null }> {
     try {
-      const response = await this.queryFn(`${this.apiUrl}/todos/${id}`, {
+      const response = await fetch(`${this.apiUrl}/todos/${id}`, {
         method: "PATCH",
         body: JSON.stringify({ done }),
         headers: {
@@ -52,7 +52,7 @@ export class HTTPTodoController implements ITodoController {
     try {
       TodoSchema.parse({ id, value, done, createdAt });
 
-      const response = await this.queryFn(`${this.apiUrl}/todos`, {
+      const response = await fetch(`${this.apiUrl}/todos`, {
         method: "POST",
         body: JSON.stringify({ id, value, done, createdAt }),
         headers: {
@@ -70,6 +70,8 @@ export class HTTPTodoController implements ITodoController {
           error: "Invalid data received from the server, please try again",
         };
       }
+
+     
       return {
         todoItem: null,
         error: "Failed to create todo, problem with the server connection",
@@ -79,7 +81,7 @@ export class HTTPTodoController implements ITodoController {
 
   async getTodos(): Promise<{ todos: TodoList; error: string | null }> {
     try {
-      const response = await this.queryFn(`${this.apiUrl}/todos`);
+      const response = await fetch(`${this.apiUrl}/todos`);
       const todos = await response.json();
       TodoListSchema.parse(todos);
       return { todos: todos, error: null };
@@ -89,7 +91,9 @@ export class HTTPTodoController implements ITodoController {
           todos: [],
           error: "Invalid data received from the server, please try again",
         };
+      
       }
+
       return {
         todos: [],
         error: "Failed to fetch todos, problem with the server connection",

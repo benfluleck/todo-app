@@ -11,7 +11,7 @@ const useTodoQuery = (): {
   setStatus: (status: Status) => void;
   setErrorMessage: (errorMessage: string | null) => void;
 } => {
-  const [todos, setTodos] = useState<TodoList|[]>([]);
+  const [todos, setTodos] = useState<TodoList>([]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [status, setStatus] = useState<Status>(Status.IDLE);
 
@@ -53,14 +53,7 @@ const useTodoQuery = (): {
     };
   }, [getTodos]);
 
-  return {
-    todos,
-    errorMessage,
-    currentStatus: status,
-    setTodos,
-    setStatus,
-    setErrorMessage,
-  };
+  return { todos, errorMessage, currentStatus: status, setTodos, setStatus, setErrorMessage };
 };
 
 export default useTodoQuery;
