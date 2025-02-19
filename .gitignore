@@ -38,4 +38,4 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 
-output.css
+/assets/output.css

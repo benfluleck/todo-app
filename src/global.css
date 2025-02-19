@@ -1,12 +1,6 @@
 @import "tailwindcss";
 
-
 body {
   font-family: "Montserrat", "Satoshi", "sans-serif";
 }
 
-@media (prefers-color-scheme: dark) {
-  body, button {
-    color: white
-  }
-}

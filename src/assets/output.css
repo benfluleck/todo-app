@@ -620,9 +620,6 @@
   .table {
     display: table;
   }
-  .h-\[400px\] {
-    height: 400px;
-  }
   .h-\[500px\] {
     height: 500px;
   }
@@ -921,11 +918,6 @@
 }
 body {
   font-family: "Montserrat", "Satoshi", "sans-serif";
-}
-@media (prefers-color-scheme: dark) {
-  body, button {
-    color: white;
-  }
 }
 @keyframes spin {
   to {
