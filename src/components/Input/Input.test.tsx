@@ -1,10 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import Input from "./Input";
-import userEvent from "@testing-library/user-event";
 
 const mockProps = {
-  handleChange: jest.fn(),
-  value: "",
+  name: "todo",
 };
 
 describe("Input Component", () => {
@@ -12,15 +10,6 @@ describe("Input Component", () => {
     render(<Input {...mockProps} />);
   });
 
-  test("calls handleChange event twice after 2 characters", async () => {
-    const handleChange = jest.fn();
-    render(<Input {...mockProps} handleChange={handleChange} />);
-    const input = screen.getByRole("textbox");
-
-    await userEvent.type(input, "T3");
-
-    expect(handleChange).toBeCalledTimes(2);
-  });
 
   test("should have a required attribute", () => {
     render(<Input {...mockProps} />);

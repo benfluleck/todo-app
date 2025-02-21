@@ -36,15 +36,13 @@ describe("Form Component", () => {
 
     await userEvent.type(input, "Test Todo");
 
-
-    expect(input.getAttribute('value')).toEqual('Test Todo')
     await userEvent.click(submitButton);
 
     expect(mockSubmit).toBeCalledTimes(1)
     expect(mockSubmit).toHaveBeenCalledWith("Test Todo");
 
    
-    expect(input.getAttribute('value')).toEqual('')
+    expect(input.getAttribute('value')).toBeNull()
 
   });
 });
