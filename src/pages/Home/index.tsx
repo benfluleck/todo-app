@@ -21,7 +21,7 @@ const Home: FC = () => {
     setTodos,
     setErrorMessage,
     setStatus,
-  } = useTodoQuery();
+  } = useTodoQuery(apiUrl);
 
   const httpTodoController = new HTTPTodoController(apiUrl);
 

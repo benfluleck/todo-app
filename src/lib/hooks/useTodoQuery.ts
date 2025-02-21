@@ -3,9 +3,9 @@ import { Status } from "../../entities/status";
 import { TodoList } from "../../entities/todo";
 import { HTTPTodoController } from "../../services/httpTodoController";
 
-const apiUrl = process.env.REACT_APP_API_URL;
 
-const useTodoQuery = (): {
+
+const useTodoQuery = (apiUrl: string): {
   todos: TodoList;
   errorMessage: string | null;
   currentStatus: Status;
@@ -37,19 +37,12 @@ const useTodoQuery = (): {
   useEffect(() => {
     const controller = new AbortController();
 
-    if (!apiUrl) {
-      setErrorMessage(
-        "API URL is not provided, please check the environment variables"
-      );
-      setStatus(Status.ERROR);
-      return;
-    }
     getTodos(apiUrl);
 
     return () => {
       setTimeout(() => controller.abort(), 3000);
     };
-  }, [getTodos]);
+  }, [getTodos, apiUrl]);
 
   return {
     todos,
