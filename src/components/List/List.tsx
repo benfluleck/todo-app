@@ -6,11 +6,11 @@ export type ListProps<Item> = {
   getRow: (value: Item) => ReactNode;
 };
 
-const List = <Todo extends Record<string, any>>({
+const List = <Item extends Record<string, any>>({
   todos,
   getKey,
   getRow,
-}: ListProps<Todo>) => (
+}: ListProps<Item>) => (
   <ul>
     {todos.map((todo) => (
       <Fragment key={getKey(todo)}>{getRow(todo)}</Fragment>

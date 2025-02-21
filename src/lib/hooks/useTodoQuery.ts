@@ -3,6 +3,8 @@ import { Status } from "../../entities/status";
 import { TodoList } from "../../entities/todo";
 import { HTTPTodoController } from "../../services/httpTodoController";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const useTodoQuery = (): {
   todos: TodoList;
   errorMessage: string | null;
@@ -15,45 +17,48 @@ const useTodoQuery = (): {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [status, setStatus] = useState<Status>(Status.IDLE);
 
-  const apiUrl = process.env.REACT_APP_API_URL;
-  const getTodos = useCallback(
-    async () => {
-      setStatus(Status.LOADING);
-      if (apiUrl) {
-        const httpTodoController = new HTTPTodoController(apiUrl);
-        const { todos, error } = await httpTodoController.getTodos();
+  const getTodos = useCallback(async (apiUrl: string) => {
+    setStatus(Status.LOADING);
 
-        if (error) {
-          setStatus(Status.ERROR);
-          setErrorMessage(error);
-          return;
-        }
+    const httpTodoController = new HTTPTodoController(apiUrl);
+    const { todos, error } = await httpTodoController.getTodos();
 
-        setStatus(Status.SUCCESS);
-        setErrorMessage(null);
-        setTodos(todos);
-      } else {
-        setErrorMessage(
-          "API URL is not provided, please check the environment variables"
-        );
-        setStatus(Status.ERROR);
-        return;
-      }
-    },
-    [apiUrl]
-  );
+    if (error) {
+      setStatus(Status.ERROR);
+      setErrorMessage(error);
+      return;
+    }
+
+    setStatus(Status.SUCCESS);
+    setErrorMessage(null);
+    setTodos(todos);
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
 
-    getTodos();
+    if (!apiUrl) {
+      setErrorMessage(
+        "API URL is not provided, please check the environment variables"
+      );
+      setStatus(Status.ERROR);
+      return;
+    }
+    getTodos(apiUrl);
 
     return () => {
       setTimeout(() => controller.abort(), 3000);
     };
   }, [getTodos]);
 
-  return { todos, errorMessage, currentStatus: status, setTodos, setStatus, setErrorMessage };
+  return {
+    todos,
+    errorMessage,
+    currentStatus: status,
+    setTodos,
+    setStatus,
+    setErrorMessage,
+  };
 };
 
 export default useTodoQuery;

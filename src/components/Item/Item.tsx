@@ -14,7 +14,7 @@ const Item: FC<ItemProps> = ({ title, done, handleClick }) => {
         done ? "line-through" : ""
       } border-b py-1.5 border-slate-100 dark:border-slate-900 hover:bg-stone-50 dark:hover:bg-gray-800 px-4 cursor-pointer`}
     >
-      <input type="checkbox" checked={done} onChange={handleClick} />
+      <input type="checkbox" checked={done} />
       <span>{title}</span>
     </li>
   );
