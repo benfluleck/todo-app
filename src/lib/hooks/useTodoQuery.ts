@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { Status } from "../../entities/status";
 import { TodoList } from "../../entities/todo";
-import { HTTPTodoController } from "../../services/httpTodoController";
+import { ITodoController } from "../../services/httpTodoController";
 
-
-
-const useTodoQuery = (apiUrl: string): {
+const useTodoQuery = (
+  todoController: ITodoController
+): {
   todos: TodoList;
   errorMessage: string | null;
   currentStatus: Status;
@@ -17,11 +17,9 @@ const useTodoQuery = (apiUrl: string): {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [status, setStatus] = useState<Status>(Status.IDLE);
 
-  const getTodos = useCallback(async (apiUrl: string) => {
+  const getTodos = useCallback(async (todoController: ITodoController) => {
     setStatus(Status.LOADING);
-
-    const httpTodoController = new HTTPTodoController(apiUrl);
-    const { todos, error } = await httpTodoController.getTodos();
+    const { todos, error } = await todoController.getTodos();
 
     if (error) {
       setStatus(Status.ERROR);
@@ -37,12 +35,12 @@ const useTodoQuery = (apiUrl: string): {
   useEffect(() => {
     const controller = new AbortController();
 
-    getTodos(apiUrl);
+    getTodos(todoController);
 
     return () => {
       setTimeout(() => controller.abort(), 3000);
     };
-  }, [getTodos, apiUrl]);
+  }, [getTodos, todoController]);
 
   return {
     todos,

@@ -1,19 +1,20 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 
 type FormProps = {
-  handleFormSubmit: (value: string) => void;
+  handleOnFormSubmit: (value: string) => void;
+  buttonText: ReactNode;
 };
 
-const Form: FC<FormProps> = ({ handleFormSubmit }) => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+const Form: FC<FormProps> = ({ handleOnFormSubmit, buttonText }) => {
+  const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.target as HTMLFormElement);
 
-    const todo = data.get("input");
+    const inputValue = data.get("input");
 
-    handleFormSubmit(todo as string);
+    handleOnFormSubmit(inputValue as string);
 
     const inputElement = document.getElementById("input");
     if (inputElement) {
@@ -25,10 +26,10 @@ const Form: FC<FormProps> = ({ handleFormSubmit }) => {
     <form
       aria-label="form"
       className="p-4 flex flex-col gap-3"
-      onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleSubmit(e)}
+      onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleOnSubmit(e)}
     >
       <Input name="input" />
-      <Button>Add Todo</Button>
+      <Button>{buttonText}</Button>
     </form>
   );
 };

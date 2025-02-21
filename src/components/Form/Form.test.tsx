@@ -6,30 +6,30 @@ const handleSubmit = jest.fn();
 
 describe("Form Component", () => {
   test("renders the Form component without error when correct props are passed", () => {
-    render(<Form handleFormSubmit={handleSubmit} />);
+    render(<Form handleOnFormSubmit={handleSubmit} />);
   });
 
   test("renders the form with the correct button", () => {
-    render(<Form handleFormSubmit={handleSubmit} />);
+    render(<Form handleOnFormSubmit={handleSubmit} />);
     expect(screen.getByRole("button")).toBeInTheDocument();
   });
 
   test("renders the form with the correct input", () => {
-    render(<Form handleFormSubmit={handleSubmit} />);
+    render(<Form handleOnFormSubmit={handleSubmit} />);
 
     expect(screen.getByRole("textbox")).toBeInTheDocument();
   });
 
   test("renders the form with the correct class", () => {
-    render(<Form handleFormSubmit={handleSubmit} />);
+    render(<Form handleOnFormSubmit={handleSubmit} />);
     expect(screen.getByRole("form")).toHaveClass("p-4 flex flex-col gap-3");
   });
 
-  test("should call handleFormSubmit on submission with value from input", async () => {
+  test("should call handleOnFormSubmit on submission with value from input", async () => {
 
     const mockSubmit = jest.fn()
 
-    render(<Form handleFormSubmit={mockSubmit} />);
+    render(<Form handleOnFormSubmit={mockSubmit} />);
     const submitButton = screen.getByRole("button");
 
     const input = screen.getByRole("textbox");

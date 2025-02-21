@@ -14,6 +14,9 @@ import { HTTPTodoController } from "../../services/httpTodoController";
 const apiUrl = process.env.REACT_APP_API_URL || "";
 
 const Home: FC = () => {
+
+  const httpTodoController = new HTTPTodoController(apiUrl);
+
   const {
     todos,
     currentStatus,
@@ -21,11 +24,9 @@ const Home: FC = () => {
     setTodos,
     setErrorMessage,
     setStatus,
-  } = useTodoQuery(apiUrl);
+  } = useTodoQuery(httpTodoController);
 
-  const httpTodoController = new HTTPTodoController(apiUrl);
-
-  const handleItemClick = async (id: string, done: boolean) => {
+  const handleOnItemClick = async (id: string, done: boolean) => {
     const { todoItem, error } = await httpTodoController.updateTodo(id, !done);
 
     if (error) {
@@ -92,11 +93,11 @@ const Home: FC = () => {
       >
         {currentStatus === API_STATUS.LOADING && <Loader />}
         <List<TodoItem>
-          todos={todos}
+          items={todos}
           getKey={(todo) => todo.id}
           getRow={(todo) => (
             <Item
-              handleClick={() => handleItemClick(todo.id, todo.done)}
+              handleOnClick={() => handleOnItemClick(todo.id, todo.done)}
               title={todo.value}
               done={todo.done}
             />
@@ -107,7 +108,7 @@ const Home: FC = () => {
           <ErrorMessage error={errorMessage} />
         )}
       </div>
-      <Form handleFormSubmit={(value) => handleCreateTodo(value)} />
+      <Form handleOnFormSubmit={(value) => handleCreateTodo(value)} buttonText="ADD TODO" />
     </div>
   );
 };

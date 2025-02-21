@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import HomePage from "./index";
 import { Status } from "../../entities/status";
-import useTodoQuery from "../../lib/hooks/useTodoQuery";
 
 jest.mock("../../lib/hooks/useTodoQuery", () => {
   return {

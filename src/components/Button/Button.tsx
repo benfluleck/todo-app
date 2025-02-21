@@ -1,8 +1,7 @@
-import { FC } from "react";
-
+import { FC, ReactNode } from "react";
 
 type ButtonProps = {
-  children: string;
+  children: ReactNode;
 };
 
 const Button: FC<ButtonProps> = ({ children }) => (

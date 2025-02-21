@@ -6,7 +6,7 @@ import {
   TodoSchema,
 } from "../entities/todo";
 
-interface ITodoController {
+export interface ITodoController {
   getTodos(): Promise<{ todos: TodoList; error: string | null }>;
   createTodo(
     todo: TodoItem
