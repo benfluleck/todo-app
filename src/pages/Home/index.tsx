@@ -14,7 +14,6 @@ import { HTTPTodoController } from "../../services/httpTodoController";
 const apiUrl = process.env.REACT_APP_API_URL || "";
 
 const Home: FC = () => {
-
   const httpTodoController = new HTTPTodoController(apiUrl);
 
   const {
@@ -26,7 +25,19 @@ const Home: FC = () => {
     setStatus,
   } = useTodoQuery(httpTodoController);
 
-  const handleOnItemClick = async (id: string, done: boolean) => {
+  const handleUpdateTodo = async (
+    event: React.MouseEvent<HTMLUListElement>
+  ) => {
+    const id = (event.target as HTMLElement).getAttribute("data-index");
+
+    if (!id) {
+      setErrorMessage("Invalid ID");
+      setStatus(API_STATUS.ERROR);
+      return;
+    }
+
+    const done = todos.find((todo) => todo.id === id)?.done;
+
     const { todoItem, error } = await httpTodoController.updateTodo(id, !done);
 
     if (error) {
@@ -95,12 +106,9 @@ const Home: FC = () => {
         <List<TodoItem>
           items={todos}
           getKey={(todo) => todo.id}
+          handleOnItemClick={handleUpdateTodo}
           getRow={(todo) => (
-            <Item
-              handleOnClick={() => handleOnItemClick(todo.id, todo.done)}
-              title={todo.value}
-              done={todo.done}
-            />
+            <Item id={todo.id} title={todo.value} done={todo.done} />
           )}
         />
 
@@ -108,7 +116,10 @@ const Home: FC = () => {
           <ErrorMessage error={errorMessage} />
         )}
       </div>
-      <Form handleOnFormSubmit={(value) => handleCreateTodo(value)} buttonText="ADD TODO" />
+      <Form
+        handleOnSubmit={(value) => handleCreateTodo(value)}
+        buttonText="ADD TODO"
+      />
     </div>
   );
 };

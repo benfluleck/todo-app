@@ -3,13 +3,13 @@ import { FC } from "react";
 export type ItemProps = {
   title: string;
   done: boolean;
-  handleOnClick: () => void;
+  id: string;
 };
 
-const Item: FC<ItemProps> = ({ title, done, handleOnClick }) => {
+const Item: FC<ItemProps> = ({ id, title, done }) => {
   return (
     <li
-      onClick={handleOnClick}
+      data-index={id}
       className={`flex gap-4 ${
         done ? "line-through" : ""
       } border-b py-1.5 border-slate-100 dark:border-slate-900 hover:bg-stone-50 dark:hover:bg-gray-800 px-4 cursor-pointer`}

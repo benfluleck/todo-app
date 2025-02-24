@@ -40,7 +40,7 @@ const useTodoQuery = (
     return () => {
       setTimeout(() => controller.abort(), 3000);
     };
-  }, [getTodos, todoController]);
+  }, [getTodos]);
 
   return {
     todos,

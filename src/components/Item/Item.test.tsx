@@ -2,9 +2,9 @@ import { render, screen } from "@testing-library/react";
 import Item, { ItemProps } from "./Item";
 
 const mockProps: ItemProps = {
+  id: "1",
   title: "Item",
   done: false,
-  handleClick: jest.fn(),
 };
 
 describe("Item Component", () => {

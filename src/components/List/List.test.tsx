@@ -2,12 +2,13 @@ import { render, screen } from "@testing-library/react";
 import List, { ListProps } from "./List";
 
 const mockProps: ListProps<Record<string, any>> = {
-  todos: [
+  items: [
     { id: "1", value: "Item 1" },
     { id: "2", value: "Item 2" },
   ],
   getKey: (todo) => todo.id,
   getRow: (todo) => <li>{todo.value}</li>,
+  handleOnItemClick: jest.fn(),
 };
 
 describe("List Component", () => {
