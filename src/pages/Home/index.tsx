@@ -28,17 +28,17 @@ const Home: FC = () => {
   const handleUpdateTodo = async (
     event: React.MouseEvent<HTMLUListElement>
   ) => {
-    const id = (event.target as HTMLElement).getAttribute("data-index");
+    const selectedId = (event.target as HTMLElement).getAttribute("data-index");
 
-    if (!id) {
+    if (!selectedId) {
       setErrorMessage("Invalid ID");
       setStatus(API_STATUS.ERROR);
       return;
     }
 
-    const done = todos.find((todo) => todo.id === id)?.done;
+    const done = todos.find((todo) => todo.id === selectedId)?.done;
 
-    const { todoItem, error } = await httpTodoController.updateTodo(id, !done);
+    const { todoItem, error } = await httpTodoController.updateTodo(selectedId, !done);
 
     if (error) {
       setErrorMessage(error);
@@ -48,7 +48,7 @@ const Home: FC = () => {
 
     if (todoItem) {
       const updatedTodos = todos.map((todo) => {
-        if (todo.id === id) {
+        if (todo.id === selectedId) {
           return {
             ...todo,
             done: todoItem.done,
