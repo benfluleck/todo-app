@@ -55,7 +55,7 @@
   "devDependencies": {
     "@playwright/test": "^1.50.1",
     "@types/styled-components": "^5.1.25",
-    "json-server": "^0.17.0",
+    "json-server": "^0.17.4",
     "sass": "^1.54.0",
     "ts-jest": "^29.2.5"
   },
