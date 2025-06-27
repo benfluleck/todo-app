@@ -28,17 +28,22 @@ const Home: FC = () => {
   const handleUpdateTodo = async (
     event: React.MouseEvent<HTMLUListElement>
   ) => {
-    const selectedId = (event.target as HTMLElement).getAttribute("data-index");
+
+
+    const selectedId = (event.target as HTMLElement).getAttribute("data-index") || (event.target as HTMLElement).getAttribute("id");
+
 
     if (!selectedId) {
-      setErrorMessage("Invalid ID");
       setStatus(API_STATUS.ERROR);
       return;
     }
 
     const done = todos.find((todo) => todo.id === selectedId)?.done;
 
-    const { todoItem, error } = await httpTodoController.updateTodo(selectedId, !done);
+    const { todoItem, error } = await httpTodoController.updateTodo(
+      selectedId,
+      !done
+    );
 
     if (error) {
       setErrorMessage(error);
